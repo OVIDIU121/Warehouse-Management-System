@@ -2,8 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from .forms import SignUpForm
+from django.shortcuts import get_object_or_404
+from django.db import transaction
+from api.models import Item, Location, PreAdvice, PreAdviceItem, Inventory
 
 # Create your views here.
 
@@ -58,3 +60,48 @@ def signup_view(request):
     else:
         form = SignUpForm()
     return render(request, 'webApplication/signup.html', {'form': form})
+
+
+def receive_items(item_id, location_id, preadvice_id, received_qty):
+    item = get_object_or_404(Item, pk=item_id)
+    location = get_object_or_404(Location, pk=location_id)
+    preadvice = get_object_or_404(PreAdvice, pk=preadvice_id)
+    try:
+        with transaction.atomic():
+            # Check if there is a pre-advice line for the item
+            preadvice_item = preadvice.items.filter(item=item).first()
+            if not preadvice_item:
+                raise ValueError(
+                    f"No pre-advice line found for item {item.name}")
+
+            # Update the pre-advice item's received quantity
+            preadvice_item.received_qty += received_qty
+
+            # Check if the received quantity matches the expected quantity
+            if preadvice_item.received_qty == preadvice_item.expected_qty:
+                preadvice_item.status = 'Received'
+                preadvice.save()
+
+            # If the received quantity is less than the expected quantity, update the pre-advice item's status
+            elif preadvice_item.received_qty < preadvice_item.expected_qty:
+                preadvice_item.status = 'Partially received'
+                preadvice.save()
+
+            # If the received quantity is greater than the expected quantity, raise an error
+            else:
+                raise ValueError(
+                    "Received quantity cannot be greater than expected quantity")
+
+            # Create an inventory item for the received item in the specified location
+            inventory_item, created = Inventory.objects.get_or_create(
+                item=item,
+                location=location,
+                defaults={'quantity': 0},
+            )
+            inventory_item.quantity += received_qty
+            inventory_item.save()
+
+    except ValueError as e:
+        return str(e)
+
+    return "Received items successfully"

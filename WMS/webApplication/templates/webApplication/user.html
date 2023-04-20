@@ -1,12 +1,10 @@
-{% extends "webApplication/layout.html"%} {% block body%}
+{% extends "webApplication/base.html"%} {% load static %} {% block body%}
 
-<h1>Welcome, {{ request.user.first_name }}</h1>
 
-<ul>
-  <li>Username: {{ request.user.username }}</li>
-  <li>Email: {{request.user.email}}</li>
 
-  <a href="{% url 'logout' %}">Log Out</a>
+<div id="root"></div>
 
-  {% endblock%}
-</ul>
+<script src = {% static "viewInventory.js"%} type="text/babel"></script>
+
+
+{% endblock%}
