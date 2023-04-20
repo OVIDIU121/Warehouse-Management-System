@@ -1,13 +1,12 @@
-{% extends "flights/layout.html"%}
+{% extends "webApplication/layout.html"%} {% block body%}
 
-{% block body%}
-    
-    <h1>Welcome, {{ request.user.first_name }}</h1>
+<h1>Welcome, {{ request.user.first_name }}</h1>
 
-    <ul>
-        <li> Username: {{ request.user.username }}</li>
-        <li> Email: {{request.user.email}}</li>
+<ul>
+  <li>Username: {{ request.user.username }}</li>
+  <li>Email: {{request.user.email}}</li>
 
-    <a href= "{% url 'logout' %}">Log Out</a>
+  <a href="{% url 'logout' %}">Log Out</a>
 
-{% endblock%}
+  {% endblock%}
+</ul>
