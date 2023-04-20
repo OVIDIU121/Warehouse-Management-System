@@ -8,7 +8,7 @@ from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     if not request.user.is_authenticated:
-        return HttpResponseRedirect(reverse("login"))
+        return render(request, "webApplication/index.html")
     return render(request, "webApplication/user.html")
 
 def login_view(request):
@@ -21,7 +21,7 @@ def login_view(request):
             return HttpResponseRedirect(reverse("index"))
         else:
             return render(request, "webApplication/login.html", {
-                "message": "Invalid credentials."
+                "message": "Invalid credentials, check your login information !"
             })
     return render(request, "webApplication/login.html")
 
