@@ -6,6 +6,10 @@ class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location
         fields = '__all__'
+        extra_kwargs = {
+            'url': {'LocationList': 'LocationDetail-detail'},
+            'delete': {'read_only': False},
+        }
 
 
 class OrderSerializer(serializers.ModelSerializer):
