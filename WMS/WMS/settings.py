@@ -77,10 +77,21 @@ WSGI_APPLICATION = 'WMS.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'ovidiu121',
+        'PASSWORD': 'Sempron3000!',
+        'HOST': 'wms-django-db.c97hka3r8i0n.eu-west-2.rds.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
