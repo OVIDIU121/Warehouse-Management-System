@@ -66,3 +66,7 @@ class InventorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Inventory
         fields = '__all__'
+        extra_kwargs = {
+            'url': {'InventoryList': 'InventoryDetail-detail'},
+            'delete': {'read_only': False},
+        }

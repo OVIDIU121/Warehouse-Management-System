@@ -13,7 +13,7 @@ from api.models import Item, Location, PreAdvice, PreAdviceItem, Inventory
 def index(request):
     if not request.user.is_authenticated:
         return render(request, "webApplication/index.html")
-    return render(request, "webApplication/user.html")
+    return render(request, "webApplication/manage.html")
 
 
 def login_view(request):
@@ -23,7 +23,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return render(request, "webApplication/manage.html")
         else:
             return render(request, "webApplication/login.html", {
                 "message": "Invalid credentials, check your login information !"
