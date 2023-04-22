@@ -1,0 +1,18 @@
+version: '3'
+#specify version
+#describes services that are part of the applications
+# database based on postgres docker image, nuild it
+# web usses dockerfile written already
+#ports enable communication between computer and docker container
+services:
+  db:
+    image: postgres
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+
+  web:
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"

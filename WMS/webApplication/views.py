@@ -24,7 +24,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, "webApplication/manage.html")
+            return render(request, "webApplication/viewInventory.html")
         else:
             return render(request, "webApplication/login.html", {
                 "message": "Invalid credentials, check your login information !"
