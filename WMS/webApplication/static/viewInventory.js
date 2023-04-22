@@ -1,3 +1,4 @@
+// Gets a cookie by name.
 function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== '') {
@@ -20,10 +21,11 @@ class InventoryList extends React.Component {
     editingQuantity: null,
   };
 
+    // Fetch the inventory for the component.
   componentDidMount() {
     this.fetchInventories();
   }
-
+  // Delete an inventory
   handleDelete = (id) => {
     if (!confirm("Are you sure you want to delete this item?")) {
       return;
@@ -41,6 +43,7 @@ class InventoryList extends React.Component {
       .catch((error) => console.error(error));
   }
 
+    // Edit an inventory.
   handleEdit = (id, editedQuantity) => {
     const { inventories } = this.state;
     const inventoryToEdit = inventories.find((inventory) => inventory.id === id);
@@ -66,6 +69,7 @@ class InventoryList extends React.Component {
   };
   
 
+    // Fetches inventory items and locations.
   fetchInventories = () => {
     fetch("/api/inventory/")
       .then((res) => res.json())
@@ -93,6 +97,7 @@ class InventoryList extends React.Component {
       });
   };
 
+  
   render() {
   const { inventories, editingId, editedQuantity } = this.state;
 

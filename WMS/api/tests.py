@@ -2,6 +2,7 @@ from django.test import TestCase
 from .models import Customer, Supplier, Item
 
 
+# Creates a test data object for a Customer model.
 class CustomerModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -25,6 +26,7 @@ class CustomerModelTest(TestCase):
         self.assertEqual(str(customer), expected_str)
 
 
+# Creates a TestCase for a Supplier model.
 class SupplierModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
@@ -48,6 +50,7 @@ class SupplierModelTest(TestCase):
         self.assertEqual(str(supplier), expected_str)
 
 
+# Class TestCase to test a item model.
 class ItemModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):

@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.db import transaction
 from api.models import Item, Location, PreAdvice, PreAdviceItem, Inventory
 
-# Create your views here.
+# Redirects user to home page or view inventory page
 
 
 def index(request):
@@ -16,6 +16,7 @@ def index(request):
     return render(request, "webApplication/viewInventory.html")
 
 
+# Login view, checks if user is can log in and returns relevant page
 def login_view(request):
     if request.method == "POST":
         username = request.POST["username"]
@@ -31,6 +32,7 @@ def login_view(request):
     return render(request, "webApplication/login.html")
 
 
+# Display a logout page.
 def logout_view(request):
     logout(request)
     return render(request, "webApplication/login.html", {
@@ -38,10 +40,12 @@ def logout_view(request):
     })
 
 
+# View for a pricing page.
 def pricing_view(request):
     return render(request, "webApplication/pricing.html")
 
 
+# Sign up a user.
 def signup_view(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -62,5 +66,6 @@ def signup_view(request):
     return render(request, 'webApplication/signup.html', {'form': form})
 
 
+# Render a form to add an inventory to web application.
 def addInventory(request):
     return render(request, "webApplication/addInventory.html")

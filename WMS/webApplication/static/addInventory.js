@@ -1,4 +1,4 @@
-
+// AddInventory constructor.
 class AddInventory extends React.Component {
   constructor(props) {
     super(props);
@@ -13,6 +13,7 @@ class AddInventory extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+    // This method is called when a component is mounted.
   componentDidMount() {
     fetch("/api/items/")
       .then(response => response.json())
@@ -26,6 +27,7 @@ class AddInventory extends React.Component {
       });
   }
 
+    // Handle input change.
   handleInputChange(event) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -35,6 +37,7 @@ class AddInventory extends React.Component {
     });
   }
 
+    // Handle a submission.
   handleSubmit(event) {
     event.preventDefault();
     const csrftoken = this.getCookie('csrftoken');
@@ -57,6 +60,7 @@ class AddInventory extends React.Component {
       window.location.href = "/";
   }
 
+    // Returns the cookie with the given name.
   getCookie(name) {
     var value = "; " + document.cookie;
     var parts = value.split("; " + name + "=");

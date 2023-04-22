@@ -6,7 +6,7 @@ from rest_framework.authentication import BasicAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated
 
 
-# Create your views here.
+# Returns a list of Location objects.
 class LocationList(generics.ListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
@@ -14,6 +14,7 @@ class LocationList(generics.ListCreateAPIView):
     permission_classes = [IsAuthenticated]
 
 
+# Returns a LocationDetail class for the RetrieveUpdateDestroy API view.
 class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
@@ -28,6 +29,7 @@ class OrderList(generics.ListCreateAPIView):
     serializer_class = OrderSerializer
 
 
+# Order details.
 class OrderDetail(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [BasicAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticated]

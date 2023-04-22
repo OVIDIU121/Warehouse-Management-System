@@ -5,6 +5,7 @@ from .forms import SignUpForm
 # Create your tests here.
 
 
+# Creates a new client and performs the test.
 class LoginViewTest(TestCase):
     def setUp(self):
         self.client = Client()
@@ -21,6 +22,7 @@ class LoginViewTest(TestCase):
         self.assertContains(response, "Invalid credentials")
 
 
+# Test to see if the user is logged out
 class LogoutViewTest(TestCase):
     def setUp(self):
         self.client = Client()
@@ -33,6 +35,7 @@ class LogoutViewTest(TestCase):
         self.assertContains(response, "Logged out")
 
 
+# Test if pricing is working.
 class PricingViewTest(TestCase):
     def setUp(self):
         self.client = Client()
@@ -44,6 +47,7 @@ class PricingViewTest(TestCase):
         self.assertTemplateUsed(response, "webApplication/pricing.html")
 
 
+# Create a test case for the signup view.
 class SignUpViewTestCase(TestCase):
     def setUp(self):
         self.client = Client()
