@@ -12,4 +12,5 @@ jobs:
           pip3 install django-bootstrap-v5
           pip3 install --user django
           pip3 install djangorestframework
+          pip3 install psycopg2
           python3 manage.py test
