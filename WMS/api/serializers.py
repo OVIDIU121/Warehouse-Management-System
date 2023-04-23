@@ -2,8 +2,6 @@ from rest_framework import serializers
 from .models import Inventory, Location, Order, OrderItem, Item, PreAdvice, PreAdviceItem, Transaction, Supplier, Customer, MoveTask
 
 # Convert model instances into a format that can be easily transferred over the network, such as JSON.
-
-
 class LocationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Location

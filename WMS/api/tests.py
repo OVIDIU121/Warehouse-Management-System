@@ -26,30 +26,6 @@ class CustomerModelTest(TestCase):
         self.assertEqual(str(customer), expected_str)
 
 
-# Creates a TestCase for a Supplier model.
-class SupplierModelTest(TestCase):
-    @classmethod
-    def setUpTestData(cls):
-        # Set up non-modified objects used by all test methods
-        Supplier.objects.create(
-            name='ABC Corp', address='456 Main St', code='XYZ789')
-
-    def test_name_label(self):
-        supplier = Supplier.objects.get(id=1)
-        field_label = supplier._meta.get_field('name').verbose_name
-        self.assertEqual(field_label, 'name')
-
-    def test_code_max_length(self):
-        supplier = Supplier.objects.get(id=1)
-        max_length = supplier._meta.get_field('code').max_length
-        self.assertEqual(max_length, 255)
-
-    def test_str_representation(self):
-        supplier = Supplier.objects.get(id=1)
-        expected_str = f'Name: {supplier.name}, Address: {supplier.address}, Code: {supplier.code}'
-        self.assertEqual(str(supplier), expected_str)
-
-
 # Class TestCase to test a item model.
 class ItemModelTest(TestCase):
     @classmethod

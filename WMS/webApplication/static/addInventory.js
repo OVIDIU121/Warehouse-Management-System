@@ -46,6 +46,7 @@ class AddInventory extends React.Component {
       location: this.state.location,
       quantity: this.state.quantity
     };
+      // Fetch data with CSRF token
     fetch("/api/inventory/", {
       method: "POST",
       headers: {
@@ -54,6 +55,7 @@ class AddInventory extends React.Component {
       },
       body: JSON.stringify(data)
     })
+      // Logs a JSON response.
       .then(response => response.json())
       .then(data => console.log(data))
       .catch(error => console.error(error));

@@ -1,7 +1,6 @@
 from django.db import models
-from django.utils import timezone
 
-
+# Creates a database model for the customer
 class Customer(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)

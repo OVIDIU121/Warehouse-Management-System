@@ -1,7 +1,7 @@
-from django.urls import path, include
+from django.urls import path
 from .views import LocationList, LocationDetail, InventoryList, InventoryDetail, SupplierList, SupplierDetail, CustomerList, CustomerDetail, MoveTaskList, MoveTaskDetail, OrderList, OrderDetail, OrderItemList, OrderItemDetail, ItemList, ItemDetail, PreAdviceList, PreAdviceDetail, PreAdviceItemList, PreAdviceItemDetail, TransactionList, TransactionDetail
 
-
+# Access enpoints for the API.
 urlpatterns = [
     path('api/locations/', LocationList.as_view()),
     path('api/locations/<int:pk>/', LocationDetail.as_view()),

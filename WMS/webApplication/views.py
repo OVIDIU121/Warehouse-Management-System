@@ -1,15 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
-from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from .forms import SignUpForm
-from django.shortcuts import get_object_or_404
-from django.db import transaction
-from api.models import Item, Location, PreAdvice, PreAdviceItem, Inventory
+
 
 # Redirects user to home page or view inventory page
-
-
 def index(request):
     if not request.user.is_authenticated:
         return render(request, "webApplication/index.html")
@@ -60,7 +54,7 @@ def signup_view(request):
 
             user = authenticate(username=username, password=raw_password, )
             login(request, user)
-            return redirect("webApplication/user.html")
+            return render(request, "webApplication/viewInventory.html")
     else:
         form = SignUpForm()
     return render(request, 'webApplication/signup.html', {'form': form})

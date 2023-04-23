@@ -35,7 +35,7 @@ class LogoutViewTest(TestCase):
         self.assertContains(response, "Logged out")
 
 
-# Test if pricing is working.
+# Test if pricing page is working.
 class PricingViewTest(TestCase):
     def setUp(self):
         self.client = Client()

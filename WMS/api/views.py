@@ -6,15 +6,16 @@ from rest_framework.authentication import BasicAuthentication, SessionAuthentica
 from rest_framework.permissions import IsAuthenticated
 
 
-# Returns a list of Location objects.
+# generic view implementation that can work with the GET and POST HTTP
+# methods for listing and creating objects, respectively.
 class LocationList(generics.ListCreateAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
     authentication_classes = [BasicAuthentication, SessionAuthentication]
     permission_classes = [IsAuthenticated]
 
-
-# Returns a LocationDetail class for the RetrieveUpdateDestroy API view.
+# GET, PUT, PATCH, and DELETE HTTP methods implemented for retrieving,
+# updating or deleting a single object
 class LocationDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Location.objects.all()
     serializer_class = LocationSerializer
