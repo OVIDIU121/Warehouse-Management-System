@@ -23,16 +23,24 @@ The project focuses on the following specifications:
 - **Back-end Database:** The application is backed by a scalable and efficient database that efficiently stores warehouse data.
 
 ## Development Platform
-The Warehouse Management Web Application is built using the following development platform and tools:
-- **Programming Language:**
-  - Backend/Application Logic: Python 3.7+
-  - Frontend: HTML, CSS, JavaScript
-- **Web Framework/Library:**
-  - Backend: Django 3.1+
-  - Frontend: React 17.0+
-  - Styling: Bootstrap 5.0+
-- **Database:**
-  - PostgreSQL 12.0+
+The Warehouse Management Web Application is built based on the following requirements:
+- asgiref==3.6.0
+- autopep8==2.0.2
+- beautifulsoup4==4.12.2
+- Django==4.2
+- django-bootstrap-v5==1.0.11
+- django-filter==23.1
+- djangorestframework==3.14.0
+- Markdown==3.4.3
+- psycopg2-binary==2.9.6
+- pycodestyle==2.10.0
+- pytz==2023.3
+- soupsieve==2.4.1
+- sqlparse==0.4.4
+- tomli==2.0.1
+- tzdata==2023.3
+- whitenoise==6.4.0
+
 
 ## Getting Started
 To set up and run the Warehouse Management Web Application locally, follow these steps:
@@ -52,6 +60,11 @@ To set up and run the Warehouse Management Web Application locally, follow these
 - Secure user authentication and session management.
 - Efficient storage and retrieval of warehouse data from the database.
 - Interactive dashboard to visualize inventory and shipment status.
+
+## Web Application structure
+- based on the deployment of the application on AWS
+![image](https://github.com/OVIDIU121/Warehouse-Management-System/assets/94175010/563b57c8-aa24-4a35-a90f-d2aa1d35af5a)
+
 
 
 For any questions or support, please contact me.
